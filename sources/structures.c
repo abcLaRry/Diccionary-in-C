@@ -1,58 +1,27 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include "structures.h"
-#define QLETTERS 26
 
-Letter_t *Letters = NULL;
-
-void clean()
+/*
+    Convert uppercase letters to lowercase, and returns 0 if him find an error
+*/
+int checkInput(char *check)
 {
-    int c;
-
-    puts("Press enter to continue...");
-    getchar();
-    while ((c = getchar()) != '\n' && c != EOF);
-    system("cls||clear");
-}
-
-void inicialize() {
-    if(!Letters) {
-        Letters = (Letter_t*) calloc(26, sizeof(Letter_t));
-        int auxLetters = 97;
-        for(int i=0; i<QLETTERS; ++i)
-        {
-            Letters[i].letter = (char) auxLetters;
-            Letters[i].root = NULL;
-            Letters[i].quantityWords = 0;
-
-            auxLetters++;
-        }
-        puts("\nCorrectly initialized, dont forget to free memory at the end");
-    }else{
-        puts("\nAlready initialized");
+    int valid = 1;
+    // 65 - 90 uppercase, 97 - 122 lowercase
+    for(int i=0; i<strlen(check); ++i)
+    {
+        if(check[i]<65||check>122||(check[i]>90&&check[i]<97)){
+            valid = 0;
+            break;
+        }else
+            check[i] = check[i]+32;
     }
+
+    return valid;
 }
 
-void addWord() {
-    char newWord[31];
-    fputs("Write the word that you want to add (30 characters max): ", stdout);
-    fgets(newWord, 30, stdin);
-    newWord[strlen(newWord)-1] = '\0'; // To delete the '\n' character
-}
-
-void delWord() {
+void insertWord(char *word)
+{
 
 }
 
-void displayAll() {
-
-}
-
-void showDetails() {
-
-}
-
-void close() {
-
-}
