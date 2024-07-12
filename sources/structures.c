@@ -20,7 +20,42 @@ int checkInput(char *check)
     return valid;
 }
 
-void insertWord(char *word)
+void insertWord(Letter_t* diccionary, char *word)
+{
+    int letterPos = 0;
+    for(letterPos=0; letterPos<QLETTERS; ++letterPos)
+        if((char) letterPos+97 == word[0]) break;
+
+    // Memory allocation for a node_t and the new word that it will contain
+    Node_t* newNode = malloc(sizeof(Node_t)+sizeof(char)*strlen(word)+1);
+    newNode->word = (void*) newNode + sizeof(Node_t);
+    strcpy(newNode->word, word);
+    newNode->right=newNode->left=NULL;
+
+    // Case 1: Root does not exist
+    if(!diccionary[letterPos].root)
+        diccionary[letterPos].root = newNode;
+
+    // Case 2: Root exist
+    else {
+        Node_t* reco = diccionary[letterPos].root;
+        Node_t* pre = NULL;
+        while(reco!=NULL)
+        {
+            pre = reco;
+            if(strcmp(newNode->word, reco->word)<0)
+                reco=reco->left;
+            else
+                reco=reco->right;
+        }
+        if(strcmp(newNode->word, pre->word)<0)
+            pre->left = newNode;
+        else
+            pre->right = newNode;
+    }
+}
+
+void freeWord(Letter_t* diccionary, char *word)
 {
 
 }
