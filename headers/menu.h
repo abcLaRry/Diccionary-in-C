@@ -2,12 +2,11 @@
 #define MENU_H_INCLUDED
 
 /*
-    Function headers, only one has parameters that are dependent on the required functionality, details in "trees.c"
+    Function headers, only one has parameters that are dependent on the required functionality (add=1 or del=0)"
 */
 void clean();
 void inicialize();
-void addWord();
-void delWord();
+void addOrDelWord(int f);
 void displayAll();
 void showDetails();
 void close();
