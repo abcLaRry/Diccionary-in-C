@@ -3,7 +3,6 @@
 #include <string.h>
 #include "menu.h"
 #include "structures.h" // Only for header functions
-#define QLETTERS 26
 
 Letter_t *Letters = NULL;
 
@@ -36,20 +35,21 @@ void inicialize()
     }
 }
 
-void addWord() {
-    char newWord[31];
-    do{
-        fputs("Write the word that you want to add (30 characters max): ", stdout);
-        fgets(newWord, 30, stdin);
-        newWord[strlen(newWord)-1] = '\0'; // To delete the '\n' character
-    }while(checkInput(newWord));
+void addOrDelWord(int f) {
+    if(letters) {
+        char word[31];
+        do{
+            fputs("Write the word (30 characters max): ", stdout);
+            fgets(word, 30, stdin);
+            word[strlen(word)-1] = '\0'; // To delete the '\n' character
+        }while(checkInput(word));
 
-    insertWord(newWord);
-}
-
-void delWord()
-{
-
+        if(f) insertWord(letters, word);
+        else freeWord(letters, word);
+    }else{
+        if(f) puts("The diccionary has not been initialized");
+        else puts("The diccionary is empty");
+    }
 }
 
 void displayAll()
