@@ -1,5 +1,6 @@
 #ifndef STRUCTURES_H_INCLUDED
 #define STRUCTURES_H_INCLUDED
+#define QLETTERS 26 // This definition is the quantity of letters that exist in english alphabet
 
 /*
     Definition of a tree node (it is contained in Letter_t)
