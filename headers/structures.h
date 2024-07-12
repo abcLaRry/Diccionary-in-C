@@ -18,15 +18,7 @@ typedef struct _node {
     int quantityWords;
 } Letter_t;
 
-/*
-    Function headers, only one has parameters that are dependent on the required functionality, details in "trees.c"
-*/
-void clean();
-void inicialize();
-void addWord();
-void delWord();
-void displayAll();
-void showDetails();
-void close();
+int checkInput(char *check);
+void insertWord(char *word);
 
 #endif // STRUCTURES_H_INCLUDED
