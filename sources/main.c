@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "structures.h"
+#include "menu.h"
 
 int main() {
     char opc;
@@ -20,9 +20,10 @@ int main() {
                 inicialize();
                 break;
             case 'b':
-                addWord();
+                addOrDelWord(1);
                 break;
             case 'c':
+                addOrDelWord(0);
                 break;
             case 'd':
                 break;
