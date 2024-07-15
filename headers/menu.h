@@ -9,6 +9,7 @@ void inicialize();
 void addOrDelWord(int f);
 void displayAll();
 void showDetails();
+void displayRepeated();
 void close();
 
 #endif // MENU_H_INCLUDED
