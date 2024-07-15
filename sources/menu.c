@@ -77,7 +77,7 @@ void displayAll()
         {
             if(diccionary[i].root!=NULL)
             {
-                printf("Letter %c:\n", i+97);
+                printf("Letter %c has %d word(s):\n", i+97, diccionary[i].quantityWords);
                 printTree(diccionary[i].root);
             }
         }
