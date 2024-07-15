@@ -2,6 +2,7 @@
 #include "menu.h"
 
 int main() {
+    int c;
     char opc;
 
     do{
@@ -14,6 +15,7 @@ int main() {
         puts("f. Display all repeated words");
         fputs("g. Exit and free memory\n> ", stdout);
         scanf("%c", &opc);
+        while ((c = getchar()) != '\n' && c != EOF);
 
         switch(opc) {
             case 'a':
@@ -26,15 +28,22 @@ int main() {
                 addOrDelWord(0);
                 break;
             case 'd':
+                displayAll();
                 break;
             case 'e':
+                showDetails();
                 break;
             case 'f':
+                displayRepeated();
+                break;
+            case 'g':
+                close();
+                opc = '\t';
                 break;
         }
 
         clean();
-    }while(opc != 'g');
+    }while(opc != '\t');
 
     return 0;
 }
