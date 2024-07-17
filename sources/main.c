@@ -6,8 +6,8 @@ int main() {
     char opc;
 
     do{
-        puts("\tDiccionary in C language\n");
-        puts("a. Initialize diccionary");
+        puts("\tDictionary in C language\n");
+        puts("a. Initialize dictionary");
         puts("b. Add word");
         puts("c. Delete word");
         puts("d. Display all words");
