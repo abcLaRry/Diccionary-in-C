@@ -4,7 +4,7 @@
 #include "menu.h"
 #include "structures.h"
 
-Letter_t diccionary[QLETTERS] = {};
+Letter_t dictionary[QLETTERS] = {};
 int ini = 0; // For validation
 
 void clean()
@@ -22,9 +22,9 @@ void inicialize()
         int auxLetters = 97;
         for(int i=0; i<QLETTERS; ++i)
         {
-            diccionary[i].letter = (char) auxLetters;
-            diccionary[i].root = NULL;
-            diccionary[i].quantityWords = 0;
+            dictionary[i].letter = (char) auxLetters;
+            dictionary[i].root = NULL;
+            dictionary[i].quantityWords = 0;
 
             auxLetters++;
         }
@@ -49,24 +49,24 @@ void addOrDelWord(int f) {
 
         if(f)
         {
-            diccionary[letterPos].root = insertNode(diccionary[letterPos].root, word);
-            diccionary[letterPos].quantityWords++;
+            dictionary[letterPos].root = insertNode(dictionary[letterPos].root, word);
+            dictionary[letterPos].quantityWords++;
             puts("Added succesfully.");
         }
         else
         {
-            if(isInTree(diccionary[letterPos].root, word))
+            if(isInTree(dictionary[letterPos].root, word))
             {
-                diccionary[letterPos].root = deleteNode(diccionary[letterPos].root, word);
-                diccionary[letterPos].quantityWords--;
+                dictionary[letterPos].root = deleteNode(dictionary[letterPos].root, word);
+                dictionary[letterPos].quantityWords--;
                 puts("Deleted successfully.");
             }
             else
                 puts("Word not found.");
         }
     }else{
-        if(f) puts("The diccionary has not been initialized");
-        else puts("The diccionary is empty");
+        if(f) puts("The dictionary has not been initialized");
+        else puts("The dictionary is empty");
     }
 }
 
@@ -75,14 +75,14 @@ void displayAll()
     if(ini) {
         for(int i=0; i<QLETTERS; ++i)
         {
-            if(diccionary[i].root!=NULL)
+            if(dictionary[i].root!=NULL)
             {
-                printf("Letter %c has %d word(s):\n", i+97, diccionary[i].quantityWords);
-                printTree(diccionary[i].root);
+                printf("Letter %c has %d word(s):\n", i+97, dictionary[i].quantityWords);
+                printTree(dictionary[i].root);
             }
         }
     }else
-        puts("The diccionary is empty");
+        puts("The dictionary is empty");
 }
 
 void showDetails()
@@ -99,27 +99,27 @@ void showDetails()
         for(letterPos=0; letterPos<QLETTERS; ++letterPos)
             if((char) letterPos+97 == word[0]) break;
 
-        int count = countNodes(diccionary[letterPos].root, word);
+        int count = countNodes(dictionary[letterPos].root, word);
         printf("The word \"%s\"\n", word);
-        printf("Appears %d time(s) in diccionary\n", count);
+        printf("Appears %d time(s) in dictionary\n", count);
     }else
-        puts("The diccionary is empty");
+        puts("The dictionary is empty");
 }
 
 void displayRepeated()
 {
     if(ini) {
         for(int i=0; i<QLETTERS; ++i)
-            printRepeated(diccionary[i].root);
+            printRepeated(dictionary[i].root);
     }else
-        puts("The diccionary is empty");
+        puts("The dictionary is empty");
 }
 
 void close()
 {
     if(ini) {
         for(int i=0; i<QLETTERS; ++i)
-            freeAllNodes(diccionary[i].root);
+            freeAllNodes(dictionary[i].root);
     }else
-        puts("The diccionary is empty");
+        puts("The dictionary is empty");
 }
